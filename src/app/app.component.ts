@@ -18,13 +18,20 @@ export class AppComponent implements OnInit {
   getWeather(city: string) {
     this.weatherService.getWeather(city)
       .subscribe(
+
         resp => this.weather = resp,
-        err => console.log(err)
+        err => {
+
+          if (err.error.cod === '404') {
+            alert('Please, insert a valid city...')
+          }
+          console.log(err)
+        }
       );
   }
 
   submitLocation(city: HTMLInputElement) {
-    city.value ? this.getWeather(city.value) : alert('Please. Insert some value');
+    city.value ? this.getWeather(city.value) : alert('Please insert some value...');
 
     city.value = '';
     city.focus();

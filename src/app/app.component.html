@@ -17,9 +17,28 @@
   <div *ngIf="weather" class="card shadow-lg rounded">
     <div class="text-muted text-uppercase text-center details">
       <h5 class="my-3">City: {{ weather.city.name }}</h5>
-      <div class="display-4 my-4">
+      <div class="display-4 my-3">
         <span> {{ weather.list[0].main.temp }}</span>
         <span>&deg;C</span>
+      </div>
+    </div>
+
+    <div class="text-muted text-uppercase text-center details">
+      <div class="d-flex bd-highlight">
+        <div class="p-2 flex-fill bd-highlight">
+          <div>Tomorrow</div>
+          <div class="display-6 my-2">
+            <span> {{ weather.list[8].main.temp }}</span>
+            <span>&deg;C</span>
+          </div>
+        </div>
+        <div class="p-2 flex-fill bd-highlight">
+          <div>After Tomorrow</div>
+          <div class="display-6 my-2">
+            <span> {{ weather.list[16].main.temp }}</span>
+            <span>&deg;C</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
