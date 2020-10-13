@@ -1,4 +1,3 @@
-import { conditionallyCreateMapObjectLiteral } from '@angular/compiler/src/render3/view/util';
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from './service/weather.service'
 
@@ -10,6 +9,8 @@ import { WeatherService } from './service/weather.service'
 export class AppComponent implements OnInit {
 
   weather: any;
+  icon: string = '';
+  iconSource: string = '';
 
   constructor(private weatherService: WeatherService) { }
 
@@ -18,10 +19,12 @@ export class AppComponent implements OnInit {
   getWeather(city: string) {
     this.weatherService.getWeather(city)
       .subscribe(
-
-        resp => this.weather = resp,
+        resp => {
+          this.weather = resp;
+          this.icon = this.weather.list[4].weather[0].icon;
+          this.iconSource = `http://openweathermap.org/img/wn/${this.icon}@2x.png`;
+        },
         err => {
-
           if (err.error.cod === '404') {
             alert('Please, insert a valid city...')
           }
@@ -32,7 +35,6 @@ export class AppComponent implements OnInit {
 
   submitLocation(city: HTMLInputElement) {
     city.value ? this.getWeather(city.value) : alert('Please insert some value...');
-
     city.value = '';
     city.focus();
 
