@@ -21,7 +21,7 @@
     <div class="text-muted text-uppercase text-center details">
       <h5 class="my-2">City: {{ weather.city.name }}</h5>
       <div class="display-4 my-3">
-        <span> {{ weather.list[4].main.temp }}</span>
+        <span> {{ weather.list[4].main.temp | mathroundTemp }}</span>
         <span>&deg;C</span>
       </div>
       <div class="my-2">{{ weather.list[4].weather[0].description }}</div>
@@ -32,14 +32,14 @@
         <div class="p-2 flex-fill bd-highlight">
           <div>Tomorrow</div>
           <div class="display-6 my-2">
-            <span> {{ weather.list[12].main.temp }}</span>
+            <span> {{ weather.list[12].main.temp | mathroundTemp }}</span>
             <span>&deg;C</span>
           </div>
         </div>
         <div class="p-2 flex-fill bd-highlight">
           <div>After Tomorrow</div>
           <div class="display-6 my-2">
-            <span> {{ weather.list[20].main.temp }}</span>
+            <span> {{ weather.list[20].main.temp | mathroundTemp }}</span>
             <span>&deg;C</span>
           </div>
         </div>
